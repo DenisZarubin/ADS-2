@@ -50,7 +50,6 @@ int countPairs3(int *arr, int len, int value) {
             }
 
             count = count + n;
-            printf("%d ", count);
         }
 }
 return count;

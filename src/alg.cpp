@@ -28,16 +28,17 @@ int countPairs2(int *arr, int len, int value) {
 }
 
 int countPairs3(int *arr, int len, int value) {
-     int value1, count = 0, middle, n, left, right = len - 1;
+    int value1, count = 0, middle, n, left, right;
     for (int i = 0; i < len-1; i++){
         if (arr[i] >= 0) {
         n = 0;
         left = i + 1;
+        right = len;
         value1 = value-arr[i];
         while (left < right) {
                 middle = left + (right - left) / 2;
                 if (arr[middle] == value1) {
-                        while (arr[middle-1] == value1) middle--;
+                        while ((arr[middle-1] == value1) && (middle > i+1)) middle--;
                         while (arr[middle] == value1) middle++, n++;
                         break;
                 } else if (arr[middle] > value1) {
@@ -45,10 +46,11 @@ int countPairs3(int *arr, int len, int value) {
                 } else {
                         left = middle+1;
                 }
-                 
+                
             }
 
             count = count + n;
+            printf("%d ", count);
         }
 }
 return count;
